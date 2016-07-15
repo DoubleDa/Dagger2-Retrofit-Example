@@ -56,7 +56,6 @@ public class ArticleAct extends Activity {
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
 
 
-
         ((XApplication) getApplication()).getmIonicChinaComponent().inject(this);
     }
 
@@ -71,7 +70,7 @@ public class ArticleAct extends Activity {
                 if (response.isSuccess()) {
                     Article article = response.body();
                     List<Article.DataEntity> mDataSet = article.getData();
-                    mArticleAdapter = new ArticleAdapter(mDataSet);
+                    mArticleAdapter = new ArticleAdapter(mDataSet, ArticleAct.this);
                     mRecyclerView.setAdapter(mArticleAdapter);
                 } else {
                     LogUtils.i(response.code());

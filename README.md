@@ -19,6 +19,52 @@
   
   		apply plugin: 'com.neenbedankt.android-apt'
   		
+  		
+## 项目使用技术棧
+
+* Dagger2
+
+依赖注入框架
+
+* Retrofit
+
+网络请求框架
+
+* OkHttp
+
+网络请求框架
+
+* Gson
+
+Json解析框架
+
+* Picasso
+
+图片加载框架
+
+* Realm
+
+数据缓存框架
+
+* MVP
+
+App架构选择
+
+## 开发笔记
+
+
+
+
+
+
+
+
+
+
+
+
+
+  		
  
     	
  

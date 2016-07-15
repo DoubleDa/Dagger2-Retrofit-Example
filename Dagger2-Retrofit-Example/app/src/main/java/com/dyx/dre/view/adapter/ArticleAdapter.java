@@ -1,13 +1,16 @@
 package com.dyx.dre.view.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dyx.dre.R;
 import com.dyx.dre.models.Article;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -22,9 +25,11 @@ import java.util.List;
  */
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
     private List<Article.DataEntity> mDataSet;
+    private Context mContext;
 
-    public ArticleAdapter(List<Article.DataEntity> mDataSet) {
+    public ArticleAdapter(List<Article.DataEntity> mDataSet, Context mContext) {
         this.mDataSet = mDataSet;
+        this.mContext = mContext;
     }
 
     @Override
@@ -59,9 +64,14 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
          */
         holder.mTv_visit_count.setText(mDataSet.get(position).getVisit_count() + "");
         /**
-         *
+         *loginname
          */
         holder.mTv_loginname.setText(mDataSet.get(position).getAuthor().getLoginname());
+        /**
+         *avatar_url
+         */
+        holder.mIv_avatar_url.setTag(position);
+        Picasso.with(mContext).load(mDataSet.get(position).getAuthor().getAvatar_url()).resize(240, 240).centerCrop().into(holder.mIv_avatar_url);
     }
 
     @Override
@@ -78,6 +88,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         TextView mTv_reply_count;
         TextView mTv_visit_count;
         TextView mTv_loginname;
+        ImageView mIv_avatar_url;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -89,6 +100,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
             mTv_reply_count = (TextView) itemView.findViewById(R.id.tv_reply_count);
             mTv_visit_count = (TextView) itemView.findViewById(R.id.tv_visit_count);
             mTv_loginname = (TextView) itemView.findViewById(R.id.tv_loginname);
+            mIv_avatar_url = (ImageView) itemView.findViewById(R.id.iv_avatar_url);
         }
     }
 }
